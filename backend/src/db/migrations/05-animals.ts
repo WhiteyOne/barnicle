@@ -2,41 +2,46 @@
 
 import { OptionsInterface } from "../../typings/seeders";
 
-let options: OptionsInterface = {};
+let options:OptionsInterface = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
 }
 
 module.exports = {
-  up: async (queryInterface: any, Sequelize: any) => {
-    return queryInterface.createTable("Users", {
+  up: async (queryInterface:any, Sequelize:any) => {
+    return queryInterface.createTable("Animals", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstName: {
-        allowNull: false,
+      name: {
+        allowNull:false,
         type: Sequelize.STRING(30)
       },
-      lastName: {
+      type:{
         allowNull: false,
-        type: Sequelize.STRING(30)
+        type: Sequelize.STRING(16),
       },
-      username: {
-        type: Sequelize.STRING(30),
+      rideable:{
+        allowNull:false,
+        type: Sequelize.BOOLEAN,
+        default: false
+      },
+      // cleaned:{
+      //   allowNull:false,
+
+      // },
+      barnId:{
         allowNull: false,
-        unique: true
+        type: Sequelize.INTEGER,
+        refrences: {model:"Barns",key:"id" }
       },
-      email: {
-        type: Sequelize.STRING(256),
-        allowNull: false,
-        unique: true
-      },
-      hashedPassword: {
-        type: Sequelize.STRING.BINARY,
-        allowNull: false
+      doctorId:{
+        allowNull:false,
+        type:Sequelize.Integer,
+        refrences: {model:"Doctors", key:"id"}
       },
       createdAt: {
         allowNull: false,
@@ -50,8 +55,8 @@ module.exports = {
       }
     }, options);
   },
-  down: async (queryInterface: any, Sequelize: any) => {
-    options.tableName = "Users";
+  down: async (queryInterface:any, Sequelize:any) => {
+    options.tableName = "Animals";
     return queryInterface.dropTable(options);
   }
 };
