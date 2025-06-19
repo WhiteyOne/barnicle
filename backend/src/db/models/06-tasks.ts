@@ -88,6 +88,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
             sequelize,
             modelName: "Task",
             defaultScope: {
+                attributes:{
+                    exclude:[""]
+                }
             },
         }
     )

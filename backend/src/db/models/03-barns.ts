@@ -89,7 +89,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             modelName: "Barn",
             defaultScope: {
                 attributes: {
-                    include: ["name","about","domain","ownerId", "createdAt", "updatedAt"]
+                    exclude: ["createdAt", "updatedAt"]
                 }
             },
         }

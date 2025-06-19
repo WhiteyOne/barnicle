@@ -4,8 +4,12 @@ const { Validator } = require('sequelize');
 
 type StudentAttributes = {
     id: number,
-    firstName: string,
-    lastName: string,
+    name: string,
+    age: number,
+    experience: number | null,
+    staffId: number,
+    animalId: number|null,
+
 };
 
 type StudentCreationAttributes = Optional<
@@ -15,23 +19,15 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
     class Student extends Model<StudentAttributes, StudentCreationAttributes> {
         declare id: CreationOptional<number>;
-        declare firstName: string;
-        declare lastName: string;
+        declare name: string;
+        declare age: number;
+        declare experience: number | null;
+        declare staffId: number;
+        declare animalId: number|null;
 
-
-        async getSafeStudent() {
-            const safeStudent = {
-                id: this.id,
-                email: this.email,
-                Studentname: this.Studentname,
-                firstName: this.firstName,
-                lastName: this.lastName,
-            };
-            return safeStudent
-        }
 
         static associate(models: any) {
-            // Associations go here
+            
         }
         // declare public static associations: { [key: string]: Association<Model<any, any>, Model<any, any>>; };
 
@@ -43,34 +39,38 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 autoIncrement: true,
                 primaryKey: true
             },
-            firstName: {
+            name: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     isGoodLength(value: string) {
                         if (value.length < 1 || value.length > 30) {
-                            throw new Error('First name must be between 1 - 30 characters');
+                            throw new Error('name must be between 1 - 30 characters');
                         }
                     },
                 }
             },
-            lastName: {
-                type: DataTypes.STRING,
+            age: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
-                validate: {
-                    isGoodLength(value: string) {
-                        if (value.length < 1 || value.length > 30) {
-                            throw new Error('Last name must be between 1 - 30 characters');
-                        }
-                    },
+                validate:{
+                    min:4
                 }
+            },
+            experience:{
+                type: DataTypes.INTEGER,
+            },
+            staffId:{
+                type: DataTypes.INTEGER,
+                allowNull:false,
+            },
+            animalId:{
+                type: DataTypes.INTEGER,
             },
         },
         {
             sequelize,
             modelName: "Student",
-            defaultScope: {
-            },
         }
     )
     return Student;
