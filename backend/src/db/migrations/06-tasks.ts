@@ -30,7 +30,7 @@ module.exports = {
         default:false
       },
       staffId: {
-        type: Sequelize.INTERGER,
+        type: Sequelize.INTEGER,
         refrences: {model:"Staff", key:"id"}
       },
       barnId:{

@@ -40,7 +40,7 @@ module.exports = {
       },
       doctorId:{
         allowNull:false,
-        type:Sequelize.Integer,
+        type:Sequelize.INTEGER,
         refrences: {model:"Doctors", key:"id"}
       },
       createdAt: {

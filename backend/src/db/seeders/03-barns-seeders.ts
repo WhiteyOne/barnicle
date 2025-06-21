@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   up: async (queryInterface:any, Sequelize:any) => {
-    options.tableName = 'Users';
+    options.tableName = 'Barns';
     return queryInterface.bulkInsert(options, [
   {
     name:"Jerry's Farm", 
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   down: async (queryInterface:any, Sequelize:any) => {
-    options.tableName = 'Users';
+    options.tableName = 'Barns';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
       username: { [Op.in]: [''] }

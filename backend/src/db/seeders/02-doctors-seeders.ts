@@ -13,10 +13,15 @@ module.exports = {
   up: async (queryInterface:any, Sequelize:any) => {
     options.tableName = 'Doctors';
     return queryInterface.bulkInsert(options, [
-  
-], {
-    firstName:"John", lastName:"hardy", specialty:"Horses", patientSlots:15, houseCalls:true, phone:"801-435-3939"
-});
+  {
+    firstName: "Gary",
+    lastName: "patrick",
+    specialty: "Horse",
+    patientSlots: 5,
+    houseCalls: true,
+    phone:"801-599-8778"
+  },
+], {});
   },
 
   down: async (queryInterface:any, Sequelize:any) => {

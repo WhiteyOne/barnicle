@@ -31,7 +31,7 @@ export interface Barn {
 export interface Staff {
     preferedName: string | null;
     role: string;
-    userId: string; 
+    userId: number; 
     barnId: number;
 }
 export interface Animal {

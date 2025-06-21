@@ -22,18 +22,18 @@ module.exports = {
       },
       age: {
         alowNull: false,
-        type: Sequelize.Integer
+        type: Sequelize.INTEGER
       },
       experience: {
-        type: Sequelize.Integer
+        type: Sequelize.INTEGER
       },
       staffId: {
-        type: Sequelize.Integer,
+        type: Sequelize.INTEGER,
         allowNull: false,
         refrences: { model: 'Staff', key: 'id' }
       },
       animalId: {
-        type: Sequelize.Integer,
+        type: Sequelize.INTEGER,
         refrences: { model: 'Animals', key: 'id' }
       },
       createdAt: {
