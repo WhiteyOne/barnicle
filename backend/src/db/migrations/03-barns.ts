@@ -28,7 +28,11 @@ module.exports = {
       domain: {
         allowNull: false,
         unique: true,
-        type: Sequelize.STRING(8)
+        type: Sequelize.STRING(16)
+      },
+      previewImg:{
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       ownerId: {
         allowNull: false,

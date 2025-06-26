@@ -7,6 +7,7 @@ type BarnAttributes = {
     name: string,
     about: string,
     domain: string,
+    previewImg: string,
     ownerId: number,
 };
 
@@ -20,6 +21,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
         declare name: string;
         declare about: string;
         declare domain: string;
+        declare previewImg: string;
         declare ownerId: number;
 
 
@@ -29,6 +31,19 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 foreignKey: "ownerId",
                 onDelete: "cascade"
             });
+            Barn.hasMany(models.Task,{
+                foreignKey: 'barnId',
+                onDelete: "cascade"
+            });
+            Barn.hasMany(models.Animal,{
+                foreignKey:"barnId",
+                onDelete:"cascade"
+            })
+            Barn.hasMany(models.Staff,{
+                foreignKey:"barnId",
+                onDelete:"cascade"
+            }
+            )
         }
         // declare public static associations: { [key: string]: Association<Model<any, any>, Model<any, any>>; };
 
@@ -72,11 +87,15 @@ module.exports = (sequelize: any, DataTypes: any) => {
                         }
                     },
                     isGoodLength(value: string) {
-                        if (value.length < 1 || value.length > 8) {
+                        if (value.length < 1 || value.length > 16) {
                             throw new Error('Domain must be between 1 - 8 characters');
                         }
                 },
             }
+        },
+        previewImg:{
+            type: DataTypes.STRING,
+            allowNull: false
         },
             ownerId: {
                 type: DataTypes.INTEGER,

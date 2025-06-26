@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignupFormPage />,
       },
+      {
+        path: "*",
+        element:<><img href="https://mliusekbln72.i.optimole.com/w:461/h:430/q:mauto/ig:avif/https://runningtbeef.com/wp-content/uploads/2019/07/no-barn-stamp.png"></img ><h1 style={{"zIndex":-1}}>404 This Page Doesn't Exsist</h1></>
+      }
     ],
   },
 ]);

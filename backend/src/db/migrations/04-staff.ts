@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
     up: async (queryInterface: any, Sequelize: any) => {
-        return queryInterface.createTable("Staff", {
+        return queryInterface.createTable("Staffs", {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -18,6 +18,7 @@ module.exports = {
             },
             preferedName: {
                 type: Sequelize.STRING(30),
+                allowNull:false
             },
             role: {
                 allowNull:false,
@@ -47,7 +48,7 @@ module.exports = {
         }, options);
     },
     down: async (queryInterface: any, Sequelize: any) => {
-        options.tableName = "Staff";
+        options.tableName = "Staffs";
         return queryInterface.dropTable(options);
     }
 };

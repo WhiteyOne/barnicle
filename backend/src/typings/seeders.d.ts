@@ -26,6 +26,7 @@ export interface Barn {
     name: string;
     about: string | null;
     domain: string;
+    previewImg: string;
     ownerId: number; //this will ref user account
 }
 export interface Staff {

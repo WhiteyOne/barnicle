@@ -1,5 +1,5 @@
 # Build for API. Converts Typescript into Javascript for production
-FROM --platform=linux/amd64 node:18-alpine as backendbuild
+FROM --platform=amd64 node:18-alpine as backendbuild
 
 WORKDIR /backend
 
@@ -12,7 +12,7 @@ COPY /backend .
 RUN npm run build
 
 # # Build for React. Converts TSX and React into a static html bundle
-FROM --platform=linux/amd64 node:18-alpine as frontendbuild
+FROM --platform=amd64 node:18-alpine as frontendbuild
 # FROM --platform=amd64 node:18-alpine as frontendbuild
 
 WORKDIR /frontend

@@ -26,7 +26,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
 
         static associate(models: any) {
-            // Associations go here
+            Staff.belongsTo(models.Barn,{
+                foreignKey:"barnId",
+                onDelete:"cascade"
+            })
+            Staff.belongsTo(models.User, {
+                foreignKey:"userId"
+            })
         }
         // declare public static associations: { [key: string]: Association<Model<any, any>, Model<any, any>>; };
 
@@ -61,7 +67,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 }
             },
             userId: {
-                type: DataTypes.integer,
+                type: DataTypes.INTEGER,
                 allowNull: false,
                 unique:true
             },

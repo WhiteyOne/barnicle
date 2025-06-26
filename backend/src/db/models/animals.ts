@@ -26,7 +26,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
         declare doctorId: number;
 
         static associate(models: any) {
-            // Associations go here
+            Animal.belongsTo(models.Barn, {
+                foreignKey:"barnId",
+                onDelete:"cascade"
+            })
         }
         // declare public static associations: { [key: string]: Association<Model<any, any>, Model<any, any>>; };
 
@@ -66,11 +69,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 defaultValue:false
             },
             barnId: {
-                type: DataTypes.INTERGER,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             doctorId: {
-                type: DataTypes.INTERGER,
+                type: DataTypes.INTEGER,
                 allowNull: false,
                 validate: {
                     len: [60, 60]

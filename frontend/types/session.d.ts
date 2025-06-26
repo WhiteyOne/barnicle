@@ -12,6 +12,8 @@ export interface ISignUpUser {
     email: string;
     username: string;
     password: string;
+    fristname: string;
+    lastname: string;
 }
 
 
@@ -19,5 +21,4 @@ export interface ICredentials {
     credential?: string;
     email?: string;
     password: string;
-
 }

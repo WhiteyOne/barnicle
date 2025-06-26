@@ -42,7 +42,12 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 onDelete: 'cascade',
                 hooks: true
             });
+            User.hasMany(models.Staff,{
+                foreignKey: 'userId',
+                onDelete:"cascade"
+            })
         }
+        
         // declare public static associations: { [key: string]: Association<Model<any, any>, Model<any, any>>; };
 
     }

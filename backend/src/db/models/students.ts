@@ -27,7 +27,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
 
         static associate(models: any) {
-            
+            Student.belongsTo(models.User, {
+                foreignKey:"userId",
+                onDelete:"cascade"
+            })
+            Student.belongsTo(models.Animal,{
+                foreignKey:"animalId",
+            })
         }
         // declare public static associations: { [key: string]: Association<Model<any, any>, Model<any, any>>; };
 
